@@ -2,6 +2,14 @@
 include_once "connection.php";
 include_once "querys.php";
 
+function GetProductID($id)
+{
+    $bd = obtenerConexion();
+    $sentencia = $bd->prepare(sqlSelectIDPrdocut());
+    $sentencia->execute([$id]);
+    return $sentencia->fetchObject();
+}
+
 function GetProduct()
 {
     $bd = obtenerConexion();
@@ -16,10 +24,18 @@ function InsertProduct($product)
     return $sentencia->execute([ $product->nombre_producto, $product->marca, $product->modelo, $product->precio, $product->stock ]);
 }
 
+function UpdateProduct($product)
+{
+    $bd = obtenerConexion();
+    $sentencia = $bd->prepare(sqlUpdatePrdocut());
+    return $sentencia->execute([$product->nombre_producto, $product->marca, $product->modelo, $product->precio, $product->stock, $product->id]);
+}
+
+
 function DeletProduct($id)
 {
     $bd = obtenerConexion();
-    $sentencia = $bd->prepare(sqlDeletPrdocut());
+    $sentencia = $bd->prepare("DELETE FROM productos WHERE id = ?");
     return $sentencia->execute([$id]);
 }
 
