@@ -53,7 +53,7 @@ function InserClient($client)
 {
     $bd = obtenerConexion();
     $sentencia = $bd->prepare(sqlInsertClient());
-    return $sentencia->execute([ $client->nombre, $client->apellido, $client->direccion, $client->telefono, $client->email ]);
+    return $sentencia->execute([ $client->nombre, $client->apellido, $client->documento,$client->direccion, $client->telefono, $client->email ]);
 }
 function UpdateClient($client)
 {

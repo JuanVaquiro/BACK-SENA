@@ -35,7 +35,7 @@ function sqlSelectClientID(){
 }
 
 function sqlInsertClient(){
-    $InsertClient = "INSERT INTO clientes(nombre, apellido, direccion, telefono, email) VALUES (?, ?, ?, ?, ?)";
+    $InsertClient = "INSERT INTO clientes(nombre, apellido, documento, direccion, telefono, email) VALUES (?, ?, ?, ?, ?, ?)";
     return $InsertClient;
 }
 function sqlUpdateClient(){
